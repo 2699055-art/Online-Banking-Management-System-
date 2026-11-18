@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">More</h1>
+<div class="two-col">
+  <section class="panel">
+    <h2>Your details</h2>
+    <dl class="summary" id="me"><dt>Loading…</dt></dl>
+    <button class="btn btn-ghost" id="logout-btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-logout"/></svg>Sign out</button>
+  </section>
+  <section class="panel">
+    <h2>Change password</h2>
+    <form id="pw-form" novalidate>
+      <div class="field"><label for="cur">Current password</label><input id="cur" name="current_password" type="password" autocomplete="current-password">
+        <p class="field-error" data-for="current_password"></p></div>
+      <div class="field"><label for="new">New password</label><input id="new" name="new_password" type="password" autocomplete="new-password">
+        <p class="field-error" data-for="new_password"></p></div>
+      <p class="form-error" role="alert"></p>
+      <button class="btn btn-primary" type="submit">Update password</button>
+    </form>
+    {% if user.role == 'customer' %}
+    <h2 class="spaced">Change transaction PIN</h2>
+    <form id="pin-form" novalidate>
+      <div class="field"><label for="pcur">Account password</label><input id="pcur" name="current_password" type="password" autocomplete="current-password">
+        <p class="field-error" data-for="current_password"></p></div>
+      <div class="field"><label for="npin">New PIN</label><input id="npin" name="new_pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off">
+        <p class="field-error" data-for="new_pin"></p></div>
+      <p class="form-error" role="alert"></p>
+      <button class="btn btn-primary" type="submit">Update PIN</button>
+    </form>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

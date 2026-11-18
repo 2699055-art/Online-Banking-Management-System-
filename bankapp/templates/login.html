@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block auth %}
+<section class="auth-card">
+  <h1>Sign in</h1>
+  <p class="lead">Use the email and password you registered with.</p>
+  <div id="notice" class="notice" hidden></div>
+  <form id="login-form" novalidate>
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="username" required>
+      <p class="field-error" data-for="email"></p>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+      <p class="field-error" data-for="password"></p>
+    </div>
+    <p class="form-error" role="alert"></p>
+    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+  <p class="switch">New to BluePass? <a href="/register">Open an account</a></p>
+  <details class="demo">
+    <summary>Demo logins</summary>
+    <table>
+      <tr><th>Customer</th><td>aarav@bluepass.test / Customer@123</td></tr>
+      <tr><th>Bank staff</th><td>staff@bluepass.test / Staff@123</td></tr>
+      <tr><th>Admin</th><td>admin@bluepass.test / Admin@123</td></tr>
+    </table>
+    <p>Demo accounts exist only when the database is seeded. Turn this off for real use.</p>
+  </details>
+</section>
+{% endblock %}

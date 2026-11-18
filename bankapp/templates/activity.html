@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Activity</h1>
+<form id="filters" class="filters" novalidate>
+  <div class="field grow"><label for="q">Search</label><input id="q" type="search" placeholder="Name, note or reference"></div>
+  <div class="field"><label for="type">Type</label>
+    <select id="type"><option value="">All</option><option value="credit">Money in</option><option value="debit">Money out</option></select></div>
+  <div class="field"><label for="from">From</label><input id="from" type="date"></div>
+  <div class="field"><label for="to">To</label><input id="to" type="date"></div>
+  <button class="btn btn-ghost" type="submit">Apply</button>
+</form>
+<section class="panel flush"><div id="ledger"><p class="loading">Loading…</p></div></section>
+<div id="pager" class="pager"></div>
+{% endblock %}

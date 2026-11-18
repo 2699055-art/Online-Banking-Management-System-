@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Send money</h1>
+<div class="two-col">
+  <section class="panel" id="send-panel">
+    <form id="transfer-form" novalidate>
+      <div class="field">
+        <label for="to_account">Recipient account number</label>
+        <input id="to_account" name="to_account" inputmode="numeric" maxlength="12" autocomplete="off" required>
+        <p class="recipient-name" id="recipient-name" hidden></p>
+        <p class="field-error" data-for="to_account"></p>
+      </div>
+      <div id="saved-chips" class="chips" aria-label="Saved recipients"></div>
+      <div class="field">
+        <label for="amount">Amount (₹)</label>
+        <input id="amount" name="amount" inputmode="decimal" autocomplete="off" placeholder="0.00" required>
+        <p class="hint" id="limit-hint"></p>
+        <p class="field-error" data-for="amount"></p>
+      </div>
+      <div class="field">
+        <label for="note">Note (optional)</label>
+        <input id="note" name="note" maxlength="60">
+        <p class="field-error" data-for="note"></p>
+      </div>
+      <p class="form-error" role="alert"></p>
+      <button class="btn btn-primary btn-block" type="submit">Review transfer</button>
+    </form>
+    <form id="confirm-form" hidden novalidate>
+      <h2>Confirm transfer</h2>
+      <dl class="summary" id="confirm-summary"></dl>
+      <div class="field">
+        <label for="pin">Transaction PIN</label>
+        <input id="pin" name="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off" required>
+        <p class="field-error" data-for="pin"></p>
+      </div>
+      <p class="form-error" role="alert"></p>
+      <div class="btn-row">
+        <button class="btn btn-ghost" type="button" id="back-btn">Edit</button>
+        <button class="btn btn-primary" type="submit">Confirm and send</button>
+      </div>
+    </form>
+    <div id="receipt" class="receipt" hidden></div>
+  </section>
+  <section class="panel">
+    <div class="panel-head"><h2>Saved recipients</h2></div>
+    <div id="beneficiaries"><p class="loading">Loading…</p></div>
+    <form id="bene-form" novalidate>
+      <h3>Save a recipient</h3>
+      <div class="field"><label for="b_number">Account number</label>
+        <input id="b_number" name="account_number" inputmode="numeric" maxlength="12" autocomplete="off">
+        <p class="field-error" data-for="account_number"></p></div>
+      <div class="field"><label for="b_nick">Nickname (optional)</label>
+        <input id="b_nick" name="nickname" maxlength="30"></div>
+      <p class="form-error" role="alert"></p>
+      <button class="btn btn-ghost" type="submit">Save recipient</button>
+    </form>
+  </section>
+</div>
+{% endblock %}

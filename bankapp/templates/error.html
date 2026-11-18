@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block auth %}
+<section class="auth-card">
+  <h1>{{ status }}</h1>
+  <p class="lead">{{ message }}</p>
+  <a class="btn btn-primary btn-block" href="/">Back to BluePass</a>
+</section>
+{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>{{ status }}</h1>
+  <p class="lead">{{ message }}</p>
+  <a class="btn btn-primary" href="/">Back to home</a>
+</section>
+{% endblock %}

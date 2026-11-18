@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Reports</h1>
+<form id="range-form" class="filters" novalidate>
+  <div class="field"><label for="preset">Period</label>
+    <select id="preset">
+      <option value="month">This month</option>
+      <option value="3">Last 3 months</option>
+      <option value="6" selected>Last 6 months</option>
+      <option value="custom">Custom range</option>
+    </select></div>
+  <div class="field" data-custom hidden><label for="r-from">From</label><input id="r-from" type="date"></div>
+  <div class="field" data-custom hidden><label for="r-to">To</label><input id="r-to" type="date"></div>
+  <button class="btn btn-ghost" type="submit">Update</button>
+  <a class="btn btn-ghost" id="export-link" href="#"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Download CSV</a>
+  <button class="btn btn-ghost" type="button" id="print-btn">Print</button>
+</form>
+<div id="report"><p class="loading">Loading…</p></div>
+{% endblock %}

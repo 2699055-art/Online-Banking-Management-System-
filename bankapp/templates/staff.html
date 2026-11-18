@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Service desk</h1>
+<div class="tabs" role="tablist" id="tabs">
+  <button role="tab" data-tab="verify" aria-selected="true">Verification</button>
+  <button role="tab" data-tab="teller" aria-selected="false">Counter</button>
+  <button role="tab" data-tab="customers" aria-selected="false">Customers</button>
+</div>
+<section class="panel" data-pane="verify"><div id="pending"><p class="loading">Loading…</p></div></section>
+<section class="panel" data-pane="teller" hidden>
+  <form id="teller-form" novalidate>
+    <div class="field"><label for="t-kind">Service</label>
+      <select id="t-kind" name="kind"><option value="deposit">Cash deposit</option><option value="withdrawal">Cash withdrawal</option></select></div>
+    <div class="field"><label for="t-acct">Account number</label><input id="t-acct" name="account_number" inputmode="numeric" maxlength="12" autocomplete="off">
+      <p class="field-error" data-for="account_number"></p></div>
+    <div class="field"><label for="t-amt">Amount (₹)</label><input id="t-amt" name="amount" inputmode="decimal" autocomplete="off">
+      <p class="field-error" data-for="amount"></p></div>
+    <div class="field"><label for="t-note">Note (optional)</label><input id="t-note" name="note" maxlength="60"></div>
+    <p class="form-error" role="alert"></p>
+    <button class="btn btn-primary" type="submit">Post to account</button>
+  </form>
+</section>
+<section class="panel" data-pane="customers" hidden>
+  <form id="cust-search" class="filters" novalidate>
+    <div class="field grow"><label for="c-q">Find a customer</label><input id="c-q" type="search" placeholder="Name, email or account number"></div>
+    <button class="btn btn-ghost" type="submit">Search</button>
+  </form>
+  <div id="customers"></div>
+</section>
+{% endblock %}

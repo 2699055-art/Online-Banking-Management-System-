@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Administration</h1>
+<div class="tabs" role="tablist" id="tabs">
+  <button role="tab" data-tab="overview" aria-selected="true">Overview</button>
+  <button role="tab" data-tab="users" aria-selected="false">Users</button>
+  <button role="tab" data-tab="logs" aria-selected="false">Activity log</button>
+</div>
+<section data-pane="overview"><div id="stats" class="stats"><p class="loading">Loading…</p></div></section>
+<section data-pane="users" hidden>
+  <div class="two-col">
+    <div class="panel">
+      <form id="user-search" class="filters" novalidate>
+        <div class="field grow"><label for="u-q">Search users</label><input id="u-q" type="search"></div>
+        <div class="field"><label for="u-role">Role</label>
+          <select id="u-role"><option value="">All</option><option value="customer">Customer</option><option value="staff">Staff</option><option value="admin">Admin</option></select></div>
+        <button class="btn btn-ghost" type="submit">Search</button>
+      </form>
+      <div id="users"></div>
+    </div>
+    <div class="panel">
+      <h2>Add staff or admin</h2>
+      <form id="user-form" novalidate>
+        <div class="field"><label for="n-name">Full name</label><input id="n-name" name="full_name"><p class="field-error" data-for="full_name"></p></div>
+        <div class="field"><label for="n-email">Email</label><input id="n-email" name="email" type="email"><p class="field-error" data-for="email"></p></div>
+        <div class="field"><label for="n-role">Role</label><select id="n-role" name="role"><option value="staff">Bank staff</option><option value="admin">Admin</option></select></div>
+        <div class="field"><label for="n-pw">Temporary password</label><input id="n-pw" name="password" type="password" autocomplete="new-password"><p class="field-error" data-for="password"></p></div>
+        <p class="form-error" role="alert"></p>
+        <button class="btn btn-primary" type="submit">Create user</button>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="panel" data-pane="logs" hidden>
+  <form id="log-search" class="filters" novalidate>
+    <div class="field grow"><label for="l-q">Filter log</label><input id="l-q" type="search" placeholder="Action, email or detail"></div>
+    <button class="btn btn-ghost" type="submit">Filter</button>
+  </form>
+  <div id="logs"></div><div id="log-pager" class="pager"></div>
+</section>
+{% endblock %}

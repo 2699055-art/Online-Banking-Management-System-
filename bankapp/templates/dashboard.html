@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Hello, <span id="first-name">{{ user.full_name.split()[0] }}</span></h1>
+<div id="status-banner"></div>
+<section id="passbook" class="passbook" aria-live="polite"><p class="loading">Loading your account…</p></section>
+<section class="quick">
+  <a class="btn btn-primary" href="/transfer"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>Send money</a>
+  <a class="btn btn-ghost" href="/reports"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>Statements</a>
+</section>
+<section class="panel">
+  <div class="panel-head"><h2>Recent activity</h2><a href="/activity">See all</a></div>
+  <div id="recent"><p class="loading">Loading…</p></div>
+</section>
+{% endblock %}
